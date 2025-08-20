@@ -32,8 +32,7 @@ namespace TodoApp.Application.Services
             var todo = await _repository.GetByIdAsync(id)
                        ?? throw new Exception("Todo not found");
 
-            if (!string.IsNullOrWhiteSpace(title))
-                todo = new TodoItem(title);
+            todo.Title = title;
 
             if (isCompleted) todo.MarkComplete();
             else todo.MarkIncomplete();
